@@ -15,6 +15,8 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 client = commands.Bot(command_prefix=when_mentioned_or(';mail '),
                       description='A bot used to send mails')
 
+game = discord.Game("Amit ORZ")
+
 
 async def send_message(ctx, message):
     await ctx.send(embed=discord.Embed(description=message))
@@ -23,6 +25,15 @@ async def send_message(ctx, message):
 @ client.event
 async def on_ready():
     print(f'{client.user.name} has connected to Discord!')
+    print('Logged in as '+client.user.name+' (ID:'+str(client.user.id) +
+          ') | Connected to '+str(len(client.guilds))+' servers')
+    print('--------')
+    await client.change_presence(status=discord.Status.online, activity=game)
+
+
+@client.command(brief='Measure delays')  # ping command
+async def ping(ctx):
+    await ctx.send(':ping_pong: Pong! ~' + str(round(client.latency * 1000, 2)) + " ms")
 
 
 @ client.command(name='start', help='Start writing the mail')
