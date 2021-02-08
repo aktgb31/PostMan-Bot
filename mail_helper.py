@@ -23,11 +23,11 @@ class Mail(commands.Cog):
         self.signature = '''<br><br><table width="351" cellspacing="0" cellpadding="0" border="0"> <tr> <td style="vertical-align: top; text-align:left;color:#000000;font-size:12px;font-family:helvetica, arial;; text-align:left"> <span><span style="margin-right:5px;color:#000000;font-size:15px;font-family:helvetica, arial">Happy Coding;</span> <br><span style="margin-right:5px;color:#000000;font-size:12px;font-family:helvetica, arial">CPHUB | NITC Codechef Campus Chapter</span></span> <br><br> <table cellpadding="0" cellpadding="0" border="0"><tr><td style="padding-right:5px"><a href="https://facebook.com/cphub.nitc/" style="display: inline-block;"><img width="40" height="40" src="https://s1g.s3.amazonaws.com/23f7b48395f8c4e25e64a2c22e9ae190.png" alt="Facebook" style="border:none;"></a></td><td style="padding-right:5px"><a href="https://instagram.com/cphub.nitc/" style="display: inline-block;"><img width="40" height="40" src="https://s1g.s3.amazonaws.com/4c616177ca37bea6338e6964ca830de5.png" alt="Instagram" style="border:none;"></a></td><td style="padding-right:5px"><a href="https://discord.gg/dpHV4sm6XF" style="display: inline-block;"><img width="40" height="40" src="https://s1g.s3.amazonaws.com/ba48639bd505cee2cc8b43ecb698f903.png" alt="Discord" style="border:none;"></a></td><td style="padding-right:5px"><a href="https://cphub-nitc.github.io/chapter/index.html" style="display: inline-block;"><img width="40" height="40" src="https://s1g.s3.amazonaws.com/8ab12118c0ee1056ed787deb1a208149.png" alt="General (Enter full link)" style="border:none;"></a></td></tr></table> </td> </tr> </table> <table width="351" cellspacing="0" cellpadding="0" border="0" style="margin-top:10px"> <tr> <td style="text-align:left;color:#aaaaaa;font-size:10px;font-family:helvetica, arial;"><p>Note: This mail is sent using PostMan BOT</p></td> </tr> </table> '''
 
     def display(self, ctx):
-        print(self.to)
-        print(self.cc)
-        print(self.bcc)
-        print(self.subject)
-        print(self.content)
+        # print(self.to)
+        # print(self.cc)
+        # print(self.bcc)
+        # print(self.subject)
+        # print(self.content)
         desc = "Information regarding current mail \n"
         embed = discord.Embed(description=desc)
         embed.set_author(name=ctx.author)
