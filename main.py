@@ -11,12 +11,12 @@ from misc import announce
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-
+BOT_ADMIN = 'Mailer'
 
 client = commands.Bot(command_prefix=commands.when_mentioned_or(';mail '),
                       description='A bot used to send mails')
 
-game = discord.Game("Shahraaz ORZ")
+game = discord.Game("Kira ORZ")
 client.remove_command('help')
 
 
@@ -40,7 +40,7 @@ async def ping(ctx):
 
 # Start sending the mail
 @ client.command(brief='Start writing a fresh mail')
-@ commands.has_role('Mailer')
+@ commands.has_role(BOT_ADMIN)
 async def start(ctx, arg):
 
     try:
@@ -84,7 +84,7 @@ async def start(ctx, arg):
             return
 
         try:
-            await send_message(ctx, f"{ctx.author.mention}, Enter Link")
+            await send_message(ctx, f"{ctx.author.mention}, Enter Contest Link")
             message = await client.wait_for('message', timeout=30, check=lambda message: message.author == ctx.author)
             MIRROR_LINK = str(message.content)
         except asyncio.TimeoutError:
@@ -92,7 +92,7 @@ async def start(ctx, arg):
             return
 
         try:
-            await send_message(ctx, f"{ctx.author.mention}, Enter Date")
+            await send_message(ctx, f"{ctx.author.mention}, Enter Contest Date")
             message = await client.wait_for('message', timeout=30, check=lambda message: message.author == ctx.author)
             MIRROR_DATE = str(message.content)
         except asyncio.TimeoutError:
@@ -100,7 +100,7 @@ async def start(ctx, arg):
             return
 
         try:
-            await send_message(ctx, f"{ctx.author.mention}, Enter Time")
+            await send_message(ctx, f"{ctx.author.mention}, Enter Contest Time")
             message = await client.wait_for('message', timeout=30, check=lambda message: message.author == ctx.author)
             MIRROR_TIME = str(message.content)
         except asyncio.TimeoutError:
@@ -122,7 +122,7 @@ async def start(ctx, arg):
 
     elif(arg.lower() == 'bc'):
         try:
-            await send_message(ctx, f"{ctx.author.mention}, Enter CONTEST number")
+            await send_message(ctx, f"{ctx.author.mention}, Enter Contest number")
             message = await client.wait_for('message', timeout=30, check=lambda message: message.author == ctx.author)
             CONTEST_NUMER = str(message.content)
         except asyncio.TimeoutError:
@@ -130,7 +130,7 @@ async def start(ctx, arg):
             return
 
         try:
-            await send_message(ctx, f"{ctx.author.mention}, Enter Link")
+            await send_message(ctx, f"{ctx.author.mention}, Enter Contest Link")
             message = await client.wait_for('message', timeout=30, check=lambda message: message.author == ctx.author)
             CONTEST_LINK = str(message.content)
         except asyncio.TimeoutError:
@@ -138,15 +138,15 @@ async def start(ctx, arg):
             return
 
         try:
-            await send_message(ctx, f"{ctx.author.mention}, Enter Date")
+            await send_message(ctx, f"{ctx.author.mention}, Enter Contest Date")
             message = await client.wait_for('message', timeout=30, check=lambda message: message.author == ctx.author)
-            CONTEST_DATE = str(message.contentv)
+            CONTEST_DATE = str(message.content)
         except asyncio.TimeoutError:
             await ctx.send(f"You took too long to type{ctx.author.mention}")
             return
 
         try:
-            await send_message(ctx, f"{ctx.author.mention}, Enter Time")
+            await send_message(ctx, f"{ctx.author.mention}, Enter Contest Time")
             message = await client.wait_for('message', timeout=30, check=lambda message: message.author == ctx.author)
             CONTEST_TIME = str(message.content)
         except asyncio.TimeoutError:
@@ -216,6 +216,7 @@ async def start(ctx, arg):
 
 
 @client.command(brief='Send in Announcements')  # Announce Something
+@ commands.has_role(BOT_ADMIN)
 async def ann(ctx):
     try:
         await send_message(ctx, f"{ctx.author.mention}, Enter the Subject")
