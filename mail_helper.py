@@ -108,12 +108,12 @@ class Mail(commands.Cog):
                     reaction, user = await client.wait_for('reaction_add', timeout=30, check=lambda reaction, user: reaction.emoji in ["✅", "❌"] and user == ctx.author)
                     if(reaction.emoji == "✅"):
                         await announce(client, ctx, self.subject, self.content)
-                    if(reaction.emoji == "❌"):
+                    else:
                         await send_message(ctx, f"{ctx.author.mention} Not Announced")
                 except asyncio.TimeoutError:
                     await ctx.send(f"You took too long to react{ctx.author.mention}")
                     return
-            if(reaction.emoji == "❌"):
+            else:
                 await send_message(ctx, f"{ctx.author.mention} Mail Discarded")
                 return
         except asyncio.TimeoutError:
