@@ -6,7 +6,7 @@ from discord.ext.commands import CommandNotFound, CommandOnCooldown, MissingPerm
 
 SERVERS = {"1": "ICPC_CORNER_GENERAL",
            "2": "ICPC_CORNER_EVENT", "3": "CPHUB"}
-CHANNELS = {"ICPC_CORNER_GENERAL": 789411627190583326, "ICPC_CORNER_EVENT": 781094812022865941,
+CHANNELS = {"ICPC_CORNER_GENERAL": 781094812022865941, "ICPC_CORNER_EVENT": 789411627190583326,
             "CPHUB": 754069393142710422}
 
 
@@ -15,7 +15,7 @@ async def send_message(ctx, message):
 
 
 async def announce(Bot, ctx, subject: str, content: str):
-    mess = discord.Embed(description="@everyone "+content, color=0x28A745)
+    mess = discord.Embed(description=content, color=0x28A745)
     mess.set_author(name=subject)
     mess.set_footer(text="-NITC Codechef Campus Chapter")
     await ctx.send(embed=mess)

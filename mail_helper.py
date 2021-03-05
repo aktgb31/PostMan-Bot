@@ -9,6 +9,7 @@ from discord.ext.commands import CommandNotFound, CommandOnCooldown, MissingPerm
 from misc import announce
 import traceback
 
+load_dotenv()
 MAIL_ID = os.getenv("MAIL_ID")
 MAIL_PASS = os.getenv("MAIL_PASS")
 yagmail.register(MAIL_ID, MAIL_PASS)
