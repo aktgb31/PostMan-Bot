@@ -5,9 +5,9 @@ from discord.ext.commands import Bot, when_mentioned_or
 from discord.ext.commands import CommandNotFound, CommandOnCooldown, MissingPermissions, MissingRequiredArgument, BadArgument, MissingAnyRole
 
 SERVERS = {"1": "ICPC_CORNER_GENERAL",
-           "2": "ICPC_CORNER_EVENT", "3": "CPHUB"}  # "4":"CODECHEF"}
+           "2": "ICPC_CORNER_EVENT", "3": "CPHUB"}
 CHANNELS = {"ICPC_CORNER_GENERAL": 789411627190583326, "ICPC_CORNER_EVENT": 781094812022865941,
-            "CPHUB": 754069393142710422}  # , "CODECHEF": 771744696024039425}
+            "CPHUB": 754069393142710422}
 
 
 async def send_message(ctx, message):
