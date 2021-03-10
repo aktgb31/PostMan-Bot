@@ -12,6 +12,7 @@ import traceback
 load_dotenv()
 MAIL_ID = os.getenv("MAIL_ID")
 MAIL_PASS = os.getenv("MAIL_PASS")
+MAIL_FROM = os.getenv("MAIL_FROM")
 yagmail.register(MAIL_ID, MAIL_PASS)
 
 
@@ -20,7 +21,7 @@ async def send_message(ctx, message):
 
 
 async def send_mail(temp, ctx):
-    yag = yagmail.SMTP(MAIL_ID)
+    yag = yagmail.SMTP(user={MAIL_ID: MAIL_FROM})
     try:
         yag.send(to=temp.to, cc=temp.cc, bcc=temp.bcc,
                  subject=temp.subject, contents=temp.content+temp.signature)
