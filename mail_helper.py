@@ -21,7 +21,7 @@ async def send_message(ctx, message):
 
 
 async def send_mail(temp, ctx):
-    yag = yagmail.SMTP(user={MAIL_ID: MAIL_FROM})
+    yag = yagmail.SMTP(user={MAIL_ID: "CP Hub"})
     try:
         yag.send(to=temp.to, cc=temp.cc, bcc=temp.bcc,
                  subject=temp.subject, contents=temp.content+temp.signature)
@@ -80,6 +80,19 @@ class Mail(commands.Cog):
     async def sub_content(self, mail_sub, mail_content):
         self.subject = mail_sub
         self.content = mail_content
+
+    async def footer(self, client, ctx):
+        try:
+            await send_message(ctx, f"{ctx.author.mention}, Enter your name")
+            message = await client.wait_for('message', timeout=30, check=lambda message: message.author == ctx.author)
+            self.content = self.content+"\n"+str(message.content)
+            await send_message(ctx, f"{ctx.author.mention}, Enter your Roll No.")
+            message = await client.wait_for('message', timeout=30, check=lambda message: message.author == ctx.author)
+            self.content = self.content+"\n"+str(message.content)
+            return True
+        except asyncio.TimeoutError:
+            await ctx.send(f"You took too long to type{ctx.author.mention}")
+            return False
 
     async def display(self, ctx):
         desc = "**Information regarding current mail** \n\n"

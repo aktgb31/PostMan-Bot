@@ -75,6 +75,8 @@ async def start(ctx):
         return
 
     await temp_mail.sub_content(mail_subject, mail_content)
+    if await temp_mail.footer(client, ctx) == False:
+        return
     await temp_mail.display(ctx)
     await temp_mail.send(client, ctx)
     del temp_mail
@@ -136,6 +138,8 @@ async def mirror(ctx):
     All The Best.'''
 
     await temp_mail.sub_content(mail_subject, mail_content)
+    if await temp_mail.footer(client, ctx) == False:
+        return
     await temp_mail.display(ctx)
     await temp_mail.send(client, ctx)
 
@@ -197,6 +201,8 @@ async def bc(ctx):
     All The Best.'''
 
     await temp_mail.sub_content(mail_subject, mail_content)
+    if await temp_mail.footer(client, ctx) == False:
+        return
     await temp_mail.display(ctx)
     await temp_mail.send(client, ctx)
 
