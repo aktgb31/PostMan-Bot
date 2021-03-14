@@ -24,8 +24,12 @@ async def send_message(ctx, message):
     await ctx.send(embed=discord.Embed(description=message))
 
 
-def check_if_it_is_us(ctx):
-    return ctx.guild.id == CPHUB
+async def check_if_it_is_us(ctx):
+    if ctx.guild.id == CPHUB:
+        return True
+    else:
+        await ctx.send("This command can be used only in CPHUB server")
+        return False
 
 
 @ client.event
@@ -265,10 +269,6 @@ async def on_command_error(ctx: commands.Context, error: Exception):
 
     elif isinstance(error, MissingPermissions) or isinstance(error, MissingAnyRole):
         await ctx.send(f"{str(error)}")
-
-    elif isinstance(error, CheckFailure):
-        print(error)
-        await ctx.send(f"{ctx.author.mention} This command can be used only in CPHUB server")
 
     else:
         print(f"{ctx.author.id} {ctx.guild.id} {ctx.message.content}")
