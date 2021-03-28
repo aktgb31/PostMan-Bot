@@ -17,7 +17,7 @@ async def send_message(ctx, message):
 async def announce(Bot, ctx, subject: str, content: str):
     mess = discord.Embed(description=content, color=0x28A745)
     mess.set_author(name=subject)
-    mess.set_footer(text="-NITC Codechef Campus Chapter")
+    mess.set_footer(text="-CP Hub, Nitc")
     await ctx.send(embed=mess)
 
     try:
